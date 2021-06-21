@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block name %}Seznam kytar{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-12">
+        <h2>Seznam kytar: {{ view.kwargs.type_name }}</h2>
+    </div>
+</div>
+<div class="row">
+    {% for guitar in guitar_type %}
+    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+        <div class="card">
+            {% if guitar.image %}
+            <img class="card-img-top" src="{{ guitar.image.url }}" alt="{{ guitar.name }}">
+            {% endif %}
+            <div class="card-body">
+                <h4 class="card-name"><a href="{% url 'guitar-detail' guitar.pk %}">{{ guitar.name }}</a></h4>
+                <p class="card-text">{% for type in guitar.type.all %}<a href="{% url 'guitar-type' type.name %}" class="btn btn-info">{{ type.name }}</a> {% endfor %}</p>
+                <a href="{% url 'guitar-detail' guitar.pk %}" class="btn btn-primary">Podrobnosti</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <strong>Celkový počet kytar:</strong> {{ num_guitars }}
+    </div>
+</div>
+{% endblock %}

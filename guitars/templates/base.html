@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <title>{% block name %}Databáze kytar{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- Add additional CSS in static file -->
+    {% load static %}
+    {% block css %}
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+    {% block header %}
+        {% include "page/header.html" %}
+    {% endblock %}
+    </header>
+    {% block navbar %}
+        {% include "page/navbar.html" %}
+    {% endblock %}
+    <main class="container-fluid">
+    {% block content %}{% endblock %}
+    </main>
+    <footer class="container-fluid">
+    {% block footer %}
+        {% include "page/footer.html" %}
+    {% endblock %}
+    </footer>
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% load mathfilters %}
+<div>
+    {% for guitar in guitars %}
+    <div class="row mt-3 mb-3 pb-2">
+        <div class="col-md-2">
+            {% if guitar.image %}
+            <a href="{% url 'guitar-detail' guitar.id %}"><img class="img-fluid" src="{{ guitar.image.url }}" alt="{{ guitar.name }}"></a>
+            {% endif %}
+        </div>
+        <div class="col-md-8">
+            <h4><a href="{% url 'guitar-detail' guitar.id %}">{{ guitar.name }}</a></h4>
+            <p>{{ guitar.plot|truncatewords:30 }}</p>
+            <p class="border-top pt-2">Počet strun: <b>{{ guitar.stringnumber }} strun</b>, typ kytary: <b>{% for guit in guitar.type.all %} {{ guit.name }} {% endfor %}</b></p>
+            <p>Popis: {{ guitar.description }}</p>
+        </div>
+        <div class="col-md-2">
+            <span class="display-4">{{ guitar.rate }}</span>
+            <div class="progress">
+                <div class="progress-bar bg-success" style="width:{{ guitar.rate|mul:'10'|floatformat }}%"></div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+

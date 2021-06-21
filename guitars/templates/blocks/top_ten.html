@@ -1,0 +1,5 @@
+<ol class="list-group">
+    {% for guitar in guitars %}
+    <li class="list-group-item list-group-item-danger d-flex justify-content-between align-items-center"><a class="text-dark" href="{% url 'guitar-detail' guitar.id %}">{{ guitar.name }}</a> <span class="badge badge-pill badge-danger">{{ guitar.rate }}</span></li>
+    {% endfor %}
+</ol>

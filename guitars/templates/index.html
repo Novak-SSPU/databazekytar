@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row mb-3">
+    <div class="col-sm-12 bg-warning">
+        <h2 class="display-4 text-center">Úvodní stránka</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <h2 class="text-center bg-success text-light p-2">Nejlepší kytary</h2>
+        {% include "blocks/new_guitars.html" %}
+    </div>
+    <div class="col-md-3">
+        <h2 class="text-center bg-danger text-light p-2">Top tři kytary</h2>
+        {% include "blocks/top_ten.html" %}
+    </div>
+    <div class="col-md-3">
+        <h2 class="text-center bg-info text-light p-2">Kytarové typy</h2>
+        {% include "blocks/type_list.html" %}
+    </div>
+</div>
+<div class="row">
+</div>
+{% endblock %}
